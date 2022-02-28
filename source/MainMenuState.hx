@@ -43,6 +43,13 @@ class MainMenuState extends MusicBeatState
 	];
 
 	var magenta:FlxSprite;
+        var menuC1:FlxSprite;
+        var menuC2:FlxSprite;
+        var menuC3:FlxSprite;
+        var menuC4:FlxSprite;
+        var menuC5:FlxSprite;
+        var menuC6:FlxSprite;
+        var menuC7:FlxSprite;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
 	var debugKeys:Array<FlxKey>;
@@ -69,7 +76,7 @@ class MainMenuState extends MusicBeatState
 
 		persistentUpdate = persistentDraw = true;
 
-		var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
+	        var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
 		bg.scrollFactor.set(0, yScroll);
 		bg.setGraphicSize(Std.int(bg.width * 1.175));
@@ -92,7 +99,63 @@ class MainMenuState extends MusicBeatState
 		magenta.antialiasing = ClientPrefs.globalAntialiasing;
 		magenta.color = 0xFFfd719b;
 		add(magenta);
-		// magenta.scrollFactor.set();
+		magenta.scrollFactor.set();
+
+                menuC1 = new FlxSprite(0).loadGraphic(Paths.image('menuC1'));
+                menuC1.x = 640;
+                menuC1.scrollFactor.set(0, 0);
+		menuC1.updateHitbox();
+                menuC1.visible = false;
+		menuC1.antialiasing = ClientPrefs.globalAntialiasing;
+		add(menuC1);
+
+                menuC2 = new FlxSprite(0).loadGraphic(Paths.image('menuC2'));
+                menuC2.x = 640;
+                menuC2.scrollFactor.set(0, 0);
+		menuC2.updateHitbox();
+                menuC2.visible = false;
+		menuC2.antialiasing = ClientPrefs.globalAntialiasing;
+		add(menuC2);
+
+                menuC3 = new FlxSprite(0).loadGraphic(Paths.image('menuC3'));
+                menuC3.x = 640;
+                menuC3.scrollFactor.set(0, 0);
+		menuC3.updateHitbox();
+                menuC3.visible = false;
+		menuC3.antialiasing = ClientPrefs.globalAntialiasing;
+		add(menuC3);
+
+                menuC4 = new FlxSprite(0).loadGraphic(Paths.image('menuC4'));
+                menuC4.x = 640;
+                menuC4.scrollFactor.set(0, 0);
+		menuC4.updateHitbox();
+                menuC4.visible = false;
+		menuC4.antialiasing = ClientPrefs.globalAntialiasing;
+		add(menuC4);
+
+                menuC5 = new FlxSprite(0).loadGraphic(Paths.image('menuC5'));
+                menuC5.x = 640;
+                menuC5.scrollFactor.set(0, 0);
+		menuC5.updateHitbox();
+                menuC5.visible = false;
+		menuC5.antialiasing = ClientPrefs.globalAntialiasing;
+		add(menuC5);
+
+                menuC6 = new FlxSprite(0).loadGraphic(Paths.image('menuC6'));
+                menuC6.x = 640;
+                menuC6.scrollFactor.set(0, 0);
+		menuC6.updateHitbox();
+                menuC6.visible = false;
+		menuC6.antialiasing = ClientPrefs.globalAntialiasing;
+		add(menuC6);
+
+                menuC7 = new FlxSprite(0).loadGraphic(Paths.image('menuC7'));
+                menuC7.x = 640;
+                menuC7.scrollFactor.set(0, 0);
+		menuC7.updateHitbox();
+                menuC7.visible = false;
+		menuC7.antialiasing = ClientPrefs.globalAntialiasing;
+		add(menuC7);
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
@@ -113,13 +176,14 @@ class MainMenuState extends MusicBeatState
 			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
 			menuItem.animation.play('idle');
 			menuItem.ID = i;
-			menuItem.screenCenter(X);
+			//menuItem.screenCenter(X);
+                        menuItem.x += 50;
 			menuItems.add(menuItem);
 			var scr:Float = (optionShit.length - 4) * 0.135;
 			if(optionShit.length < 6) scr = 0;
 			menuItem.scrollFactor.set(0, scr);
 			menuItem.antialiasing = ClientPrefs.globalAntialiasing;
-			//menuItem.setGraphicSize(Std.int(menuItem.width * 0.58));
+			menuItem.setGraphicSize(Std.int(menuItem.width * 0.58));
 			menuItem.updateHitbox();
 		}
 
@@ -261,10 +325,74 @@ class MainMenuState extends MusicBeatState
 		}
 
 		super.update(elapsed);
+                
+                //characters in right lol
+                if (optionShit[curSelected] == 'story_mode')
+                {
+                        menuC1.visible = true;
+                }
+                else
+                {
+                        menuC1.visible = false;
+                }
+
+                if (optionShit[curSelected] == 'freeplay')
+                {
+                        menuC2.visible = true;
+                }
+                else
+                {
+                        menuC2.visible = false;
+                }
+
+                if (optionShit[curSelected] == 'mods')
+                {
+                        menuC3.visible = true;
+                }
+                else
+                {
+                        menuC3.visible = false;
+                }
+
+                if (optionShit[curSelected] == 'awards')
+                {
+                        menuC4.visible = true;
+                }
+                else
+                {
+                        menuC4.visible = false;
+                }
+
+                if (optionShit[curSelected] == 'credits')
+                {
+                        menuC5.visible = true;
+                }
+                else
+                {
+                        menuC5.visible = false;
+                }
+
+                if (optionShit[curSelected] == 'donate')
+                {
+                        menuC6.visible = true;
+                }
+                else
+                {
+                        menuC6.visible = false;
+                }
+
+                if (optionShit[curSelected] == 'options')
+                {
+                        menuC7.visible = true;
+                }
+                else
+                {
+                        menuC7.visible = false;
+                }
 
 		menuItems.forEach(function(spr:FlxSprite)
 		{
-			spr.screenCenter(X);
+	           //spr.screenCenter(X);
 		});
 	}
 
