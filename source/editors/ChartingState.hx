@@ -379,6 +379,7 @@ class ChartingState extends MusicBeatState
 		
 		updateGrid();
 
+                #if android
 		key_space = new FlxButton(60, 60, "");
         key_space.loadGraphic(Paths.image("key_space")); //"assets/images/key_space.png"
         key_space.alpha = 0.75;
@@ -389,7 +390,7 @@ class ChartingState extends MusicBeatState
         key_shift.alpha = 0.75;
         add(key_shift);
 
-        #if android
+   
 		addVirtualPad(FULL, A_B);
 		#end
 
